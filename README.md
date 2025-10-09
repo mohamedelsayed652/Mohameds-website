@@ -1,6 +1,6 @@
-# Mohamed El Sayed - Data Analytics Portfolio
+# Mohamed El Sayed - Portfolio
 
-A professional portfolio website showcasing expertise in data analytics, machine learning, and business intelligence.
+A professional portfolio website showcasing expertise in Software Engineering, data analytics, machine learning, and business intelligence.
 
 
 ## 📁 Project Structure
