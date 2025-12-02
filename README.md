@@ -1,6 +1,6 @@
 # Mohamed El Sayed - Portfolio
 
-A professional portfolio website showcasing expertise in Software Engineering, data analytics, machine learning, and business intelligence.
+A professional portfolio website showcasing expertise in Cloud Engineering, data analytics, machine learning, and business intelligence.
 
 
 ## 📁 Project Structure
@@ -60,7 +60,7 @@ The website showcases:
 - **Technical Skills**: Python, SQL, Spark, Machine Learning, AWS
 - **Projects**: NYC Taxi Analysis, Image Classification, COVID Research, Database Design
 - **Experience**: IT Support, Infrastructure, Maintenance
-- **Certifications**: AWS Cloud Practitioner
+- **Certifications**: AWS Cloud Practitioner, AWS Solutions Architect - Associate
 
 ## 🎯 Interactive Elements
 
