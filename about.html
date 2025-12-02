@@ -374,31 +374,49 @@
             background: white;
         }
         
-        .certification-card {
-            max-width: 600px;
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
             margin: 0 auto;
+        }
+        
+        .certification-card {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             border-radius: 1rem;
-            padding: 3rem;
-            text-align: center;
+            padding: 2.5rem;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            height: 100%;
         }
         
         .certification-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
         }
         
         .certification-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
         }
         
         .certification-description {
-            opacity: 0.9;
+            opacity: 0.95;
             line-height: 1.6;
+            font-size: 1rem;
+        }
+        
+        .certification-badge {
+            display: inline-block;
+            margin-top: 0.75rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
         }
         
         /* Footer */
@@ -407,6 +425,12 @@
             color: white;
             text-align: center;
             padding: 2rem;
+        }
+        
+        .footer-note {
+            margin-top: 0.5rem;
+            opacity: 0.9;
+            font-size: 0.95rem;
         }
         
         /* Animations */
@@ -495,7 +519,7 @@
         <div class="max-w-4xl mx-auto px-4">
             <h1 class="page-title font-display animate-on-scroll">About Me</h1>
             <p class="page-subtitle animate-on-scroll">
-                Passionate Software developer with a strong foundation in data systems
+                Data and cloud engineer focused on building analytics-ready systems that deliver clear business outcomes.
             </p>
         </div>
     </section>
@@ -509,20 +533,13 @@
             <div class="intro-content animate-on-scroll">
                 <h2>Hello, I'm Mohamed</h2>
                 <p>
-                    I'm a Software professional with a Bachelor's degree in Computer Science 
-                    specializing in Big Data Systems from Wilfrid Laurier University. My passion lies 
-                    in transforming complex data into actionable insights that drive business decisions.
+                    I'm a Software professional with a Bachelor's degree in Computer Science specializing in Big Data Systems. I help teams turn messy data into dashboards, forecasts, and decisions by owning pipelines end-to-end.
                 </p>
                 <p>
-                    With hands-on experience in Python, SQL, Apache Spark, and machine learning, 
-                    I've worked on diverse projects ranging from NYC taxi data analysis to COVID-19 
-                    vaccination trend analysis. My technical foundation is complemented by strong 
-                    problem-solving skills and a commitment to continuous learning.
+                    Hands-on with Python, SQL, Apache Spark/Databricks, and machine learning, I've shipped projects from NYC taxi analytics to COVID-19 vaccination insights and operational dashboards. I focus on reliability, performance, and telling the story in the numbers.
                 </p>
                 <p>
-                    Currently, I'm AWS Certified and actively seeking opportunities to apply my skills 
-                    in data analytics, business intelligence, and machine learning to solve real-world 
-                    challenges and contribute to data-driven organizations.
+                    AWS Certified Solutions Architect - Associate (SAA-C03) and AWS Certified Cloud Practitioner. Actively interviewing for data engineering, analytics engineering, and BI roles where I can build impactful data products.
                 </p>
             </div>
         </div>
@@ -633,13 +650,24 @@
     <section class="certifications-section">
         <div class="max-w-6xl mx-auto px-4">
             <h2 class="section-title font-display animate-on-scroll">Certifications</h2>
-            <div class="certification-card animate-on-scroll">
-                <div class="certification-icon">☁️</div>
-                <h3 class="certification-title">AWS Certified Cloud Practitioner</h3>
-                <p class="certification-description">
-                    Validated cloud knowledge and understanding of AWS cloud services, cloud concepts, 
-                    security, and architecture best practices.
-                </p>
+            <div class="certifications-grid">
+                <div class="certification-card animate-on-scroll">
+                    <div class="certification-icon font-mono">SAA</div>
+                    <h3 class="certification-title">AWS Certified Solutions Architect - Associate</h3>
+                    <p class="certification-description">
+                        Demonstrates the ability to design and implement secure, resilient, and cost-optimized architectures on AWS, aligned with the SAA-C03 exam blueprint.
+                    </p>
+                    <div class="certification-badge">Exam: SAA-C03</div>
+                </div>
+                <div class="certification-card animate-on-scroll">
+                    <div class="certification-icon font-mono">AWS</div>
+                    <h3 class="certification-title">AWS Certified Cloud Practitioner</h3>
+                    <p class="certification-description">
+                        Validated cloud knowledge and understanding of AWS cloud services, cloud concepts, 
+                        security, and architecture best practices.
+                    </p>
+                    <div class="certification-badge">Foundational</div>
+                </div>
             </div>
         </div>
     </section>
@@ -648,6 +676,7 @@
     <footer class="footer">
         <div class="max-w-6xl mx-auto px-4">
             <p>&copy; 2025 Mohamed El Sayed. All rights reserved.</p>
+            <p class="footer-note">Hosted on AWS (S3 static site + CloudFront).</p>
         </div>
     </footer>
 
