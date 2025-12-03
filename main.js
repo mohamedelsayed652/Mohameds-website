@@ -371,12 +371,14 @@ function filterProjects(filter, projects) {
 }
 
 // Contact form functionality
+const CONTACT_API_URL = "https://lge11geo31.execute-api.us-east-1.amazonaws.com/prod/contact";
+
 function initContactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
 
     form.addEventListener('submit', handleFormSubmit);
-    
+
     // Real-time validation
     const inputs = form.querySelectorAll('input, textarea');
     inputs.forEach(input => {
@@ -385,33 +387,73 @@ function initContactForm() {
     });
 }
 
-// Handle form submission
-function handleFormSubmit(e) {
+// Handle form submission (now actually calls AWS API)
+async function handleFormSubmit(e) {
     e.preventDefault();
-    
+
     const form = e.target;
-    const formData = new FormData(form);
-    
-    // Validate all fields
+
+    // validate all required fields
     const isValid = validateForm(form);
-    
-    if (isValid) {
+    if (!isValid) {
+        showFormError("Please fix the highlighted fields.");
+        return;
+    }
+
+    const formData = new FormData(form);
+    const payload = {
+        name: formData.get("name")?.trim(),
+        email: formData.get("email")?.trim(),
+        subject: formData.get("subject")?.trim(),
+        message: formData.get("message")?.trim(),
+    };
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn ? submitBtn.textContent : null;
+
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+    }
+
+    try {
+        const response = await fetch(CONTACT_API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+        });
+
+        const data = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+            throw new Error(data.error || "Failed to send message. Please try again.");
+        }
+
+        // Success – show overlay + reset form
         showFormSuccess();
         form.reset();
-    } else {
-        showFormError();
+    } catch (err) {
+        console.error(err);
+        showFormError(err.message || "Something went wrong. Please try again later.");
+    } finally {
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        }
     }
 }
 
 // Validate individual field
 function validateField(e) {
-    const field = e.target;
+    const field = e.target || e; // supports both event + direct call
     const value = field.value.trim();
     const fieldName = field.name;
-    
+
     let isValid = true;
     let errorMessage = '';
-    
+
     switch (fieldName) {
         case 'name':
             if (value.length < 2) {
@@ -433,13 +475,13 @@ function validateField(e) {
             }
             break;
     }
-    
+
     if (!isValid) {
         showFieldError(field, errorMessage);
     } else {
         clearFieldError(field);
     }
-    
+
     return isValid;
 }
 
@@ -447,41 +489,42 @@ function validateField(e) {
 function validateForm(form) {
     const inputs = form.querySelectorAll('input[required], textarea[required]');
     let isValid = true;
-    
+
     inputs.forEach(input => {
-        if (!validateField({ target: input })) {
+        if (!validateField(input)) {
             isValid = false;
         }
     });
-    
+
     return isValid;
 }
 
 // Show field error
 function showFieldError(field, message) {
     clearFieldError(field);
-    
+
     const errorDiv = document.createElement('div');
     errorDiv.className = 'field-error';
     errorDiv.textContent = message;
-    
+
     field.parentNode.appendChild(errorDiv);
     field.classList.add('error');
 }
 
 // Clear field error
-function clearFieldError(field) {
+function clearFieldError(e) {
+    const field = e.target || e;
     const fieldContainer = field.parentNode;
     const existingError = fieldContainer.querySelector('.field-error');
-    
+
     if (existingError) {
         existingError.remove();
     }
-    
+
     field.classList.remove('error');
 }
 
-// Show form success
+// Show form success overlay (unchanged, just used after API success)
 function showFormSuccess() {
     const successDiv = document.createElement('div');
     successDiv.className = 'form-success';
@@ -491,9 +534,9 @@ function showFormSuccess() {
             <p>Thank you for reaching out. I'll get back to you soon.</p>
         </div>
     `;
-    
+
     document.body.appendChild(successDiv);
-    
+
     anime({
         targets: successDiv,
         opacity: [0, 1],
@@ -516,6 +559,43 @@ function showFormSuccess() {
         }
     });
 }
+
+// Show form error overlay
+function showFormError(message) {
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'form-success';
+    errorDiv.innerHTML = `
+        <div class="success-content">
+            <h3>Oops, something went wrong</h3>
+            <p>${message || 'Please try again later.'}</p>
+        </div>
+    `;
+
+    document.body.appendChild(errorDiv);
+
+    anime({
+        targets: errorDiv,
+        opacity: [0, 1],
+        scale: [0.8, 1],
+        duration: 500,
+        easing: 'easeOutCubic',
+        complete: () => {
+            setTimeout(() => {
+                anime({
+                    targets: errorDiv,
+                    opacity: 0,
+                    scale: 0.8,
+                    duration: 300,
+                    easing: 'easeOutCubic',
+                    complete: () => {
+                        errorDiv.remove();
+                    }
+                });
+            }, 3000);
+        }
+    });
+}
+
 
 // Hero particles background
 function initHeroParticles() {
