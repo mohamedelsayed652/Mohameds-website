@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed El Sayed - Software Professional Portfolio</title>
-    <meta name="description" content="Professional data analytics portfolio showcasing expertise in Python, SQL, Spark, and machine learning projects.">
+    <title>Mohamed El Sayed - Cloud & DevOps Portfolio</title>
+    <meta name="description" content="AWS-focused Cloud/DevOps portfolio: Terraform, Docker, GitHub Actions, and serverless builds by Mohamed El Sayed.">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -39,6 +39,19 @@
             background-color: var(--neutral);
             color: var(--text);
             line-height: 1.6;
+            padding-top: 60px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
         
         .font-display {
@@ -260,6 +273,7 @@
             overflow: hidden;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            position: relative;
         }
         
         .project-slide:hover {
@@ -269,12 +283,20 @@
         
         .project-image {
             width: 100%;
-            height: 200px;
+            height: 240px;
             object-fit: cover;
+            display: block;
+            filter: brightness(0.65);
         }
         
         .project-info {
             padding: 1.5rem;
+            background: #ffffff;
+            box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.08);
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
         
         .project-title {
@@ -435,31 +457,45 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white text-black px-3 py-2 rounded">Skip to content</a>
+
     <!-- Navigation -->
     <nav class="nav-bar">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center">
                 <div class="font-display font-bold text-xl text-white">Mohamed El Sayed</div>
-                <div class="nav-links flex space-x-6">
+                <div class="nav-links flex items-center space-x-4">
                     <a href="index.html" class="nav-link">Home</a>
                     <a href="about.html" class="nav-link">About</a>
                     <a href="projects.html" class="nav-link">Projects</a>
                     <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="resume.pdf" class="nav-link" target="_blank" rel="noopener">Resume</a>
+                    <a href="https://github.com/mohamedelsayed652" class="nav-link" target="_blank" rel="noopener">GitHub</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="main-content">
         <div class="hero-particles" id="hero-particles"></div>
         <div class="hero-content animate-on-scroll">
-            <h1 class="hero-title font-display">Data & Cloud Engineer</h1>
-            <p class="hero-subtitle">Building analytics that ship and scale</p>
+            <h1 class="hero-title font-display">Cloud engineer</h1>
+            <p class="hero-subtitle">AWS SAA-certified; Terraform, Docker, and GitHub Actions to deploy fast and safely.</p>
             <p class="hero-description">
-                AWS SAA-C03 certified engineer with Python, SQL, Spark, and BI expertise. I design end-to-end pipelines, dashboards, and cloud architectures that turn raw data into decisions.
+                I build the pipelines and platforms so teams can ship with confidence: S3/CloudFront static hosting, serverless APIs on API Gateway + Lambda, SES-backed contact flows, Terraform-managed IaC, and CI/CD that delivers in minutes.
             </p>
-            <a href="contact.html" class="cta-button">Hire Me</a>
+            <div class="cta-buttons animate-on-scroll" style="justify-content:center; gap:1rem; flex-wrap:wrap;">
+                <a href="resume.pdf" class="cta-button" target="_blank" rel="noopener">Download Resume</a>
+                <a href="https://github.com/mohamedelsayed652" class="btn-secondary" target="_blank" rel="noopener">View GitHub</a>
+                <a href="projects.html" class="btn-secondary">AWS Case Study</a>
+            </div>
+            <div class="mt-8 flex flex-wrap justify-center gap-3 text-sm">
+                <span class="px-3 py-2 rounded-full bg-white text-black font-semibold shadow">AWS SAA-C03</span>
+                <span class="px-3 py-2 rounded-full bg-white text-black font-semibold shadow">Built with Terraform</span>
+                <span class="px-3 py-2 rounded-full bg-white text-black font-semibold shadow">S3 + CloudFront + API Gateway + Lambda + SES</span>
+                <span class="px-3 py-2 rounded-full bg-white text-black font-semibold shadow">CI/CD: GitHub Actions</span>
+            </div>
         </div>
     </section>
 
@@ -469,38 +505,34 @@
             <h2 class="section-title font-display animate-on-scroll">Core Expertise</h2>
             <div class="skills-grid">
                 <div class="skill-card animate-on-scroll">
-                    <div class="skill-icon">🐍</div>
-                    <h3 class="skill-name">Programming</h3>
+                    <div class="skill-icon">AWS</div>
+                    <h3 class="skill-name">AWS Architecture</h3>
                     <p class="skill-description">
-                        Advanced proficiency in Python, Java, C, and JavaScript for data processing, 
-                        analysis, and application development.
+                        S3/CloudFront static hosting, API Gateway + Lambda serverless APIs, SES for mail delivery, Route 53 + ACM for TLS, VPC fundamentals.
                     </p>
                 </div>
                 
                 <div class="skill-card animate-on-scroll">
-                    <div class="skill-icon">🗄️</div>
-                    <h3 class="skill-name">Databases</h3>
+                    <div class="skill-icon">IaC</div>
+                    <h3 class="skill-name">Infrastructure as Code</h3>
                     <p class="skill-description">
-                        Expert in SQL, MySQL, MongoDB, and data warehousing solutions for efficient 
-                        data storage and retrieval.
+                        Terraform modules for S3 sites, CloudFront distributions, API Gateway, Lambda, IAM policies, SES domains, and parameterized environments.
                     </p>
                 </div>
                 
                 <div class="skill-card animate-on-scroll">
-                    <div class="skill-icon">📊</div>
-                    <h3 class="skill-name">Analytics</h3>
+                    <div class="skill-icon">CI</div>
+                    <h3 class="skill-name">CI/CD & Automation</h3>
                     <p class="skill-description">
-                        Statistical analysis, machine learning, and data visualization using 
-                        Pandas, NumPy, Scikit-learn, and Power BI.
+                        GitHub Actions for lint/test/build, Terraform plan/apply, S3 sync and CloudFront invalidations, deployment notifications.
                     </p>
                 </div>
                 
                 <div class="skill-card animate-on-scroll">
-                    <div class="skill-icon">⚡</div>
-                    <h3 class="skill-name">Big Data</h3>
+                    <div class="skill-icon">Dev</div>
+                    <h3 class="skill-name">DevOps Fundamentals</h3>
                     <p class="skill-description">
-                        Large-scale data processing with Apache Spark, Databricks, and cloud 
-                        platforms for enterprise-level analytics.
+                        Dockerizing services, Linux-first workflows, logging/monitoring basics, and performance-focused delivery for small teams.
                     </p>
                 </div>
             </div>
@@ -516,6 +548,20 @@
                     <ul class="splide__list">
                         <li class="splide__slide">
                             <div class="project-slide">
+                                <img src="resources/project-4.jpg" alt="AWS Static Site and Serverless Contact" class="project-image">
+                                <div class="project-info">
+                                    <h3 class="project-title">AWS Static Site + Serverless Contact</h3>
+                                    <div class="project-tech">
+                                        <span class="tech-tag">AWS</span>
+                                        <span class="tech-tag">Terraform</span>
+                                        <span class="tech-tag">GitHub Actions</span>
+                                    </div>
+                                    <p>Provisioned S3 + CloudFront + Route 53 + ACM with Terraform, and a serverless contact flow on API Gateway → Lambda → SES with CI/CD deploys in minutes.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="project-slide">
                                 <img src="resources/project-1.jpg" alt="NYC Taxi Analysis" class="project-image">
                                 <div class="project-info">
                                     <h3 class="project-title">NYC Taxi Big Data Analysis</h3>
@@ -524,7 +570,7 @@
                                         <span class="tech-tag">Databricks</span>
                                         <span class="tech-tag">SQL</span>
                                     </div>
-                                    <p>Analyzed NYC taxi data using Spark and Databricks to extract insights on trip patterns and geographic distributions.</p>
+                                    <p>Optimized Spark ETL to cut runtime from 25m → 8m on 10GB+ trips data, surfacing peak-hour and geo demand patterns.</p>
                                 </div>
                             </div>
                         </li>
@@ -538,7 +584,7 @@
                                         <span class="tech-tag">Torch</span>
                                         <span class="tech-tag">CNN</span>
                                     </div>
-                                    <p>Developed and compared image classifiers using ANN and CNN architectures with comprehensive performance analysis.</p>
+                                    <p>Benchmarked CNN vs ANN from scratch, reaching ~95% accuracy with augmentations and faster inference.</p>
                                 </div>
                             </div>
                         </li>
@@ -552,21 +598,7 @@
                                         <span class="tech-tag">Pandas</span>
                                         <span class="tech-tag">Matplotlib</span>
                                     </div>
-                                    <p>Analyzed vaccination trends in Ontario using government data to identify patterns and public health insights.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="splide__slide">
-                            <div class="project-slide">
-                                <img src="resources/project-4.jpg" alt="Student Database" class="project-image">
-                                <div class="project-info">
-                                    <h3 class="project-title">Student Record Database</h3>
-                                    <div class="project-tech">
-                                        <span class="tech-tag">SQL</span>
-                                        <span class="tech-tag">ER Diagrams</span>
-                                        <span class="tech-tag">Database Design</span>
-                                    </div>
-                                    <p>Designed comprehensive student database system with optimized performance and advanced SQL techniques.</p>
+                                    <p>Built time-series visualizations for Ontario vaccination uptake, highlighting spikes tied to policy changes.</p>
                                 </div>
                             </div>
                         </li>
@@ -581,7 +613,7 @@
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="cta-title font-display animate-on-scroll">Ready to Work Together?</h2>
             <p class="cta-description animate-on-scroll">
-                Actively interviewing for data/analytics engineering and BI roles. If you need pipelines, dashboards, or cloud architectures built right, let's talk.
+                Actively interviewing for Cloud/DevOps roles. If you need AWS infrastructure, serverless APIs, or CI/CD pipelines delivered fast, let's talk.
             </p>
             <div class="cta-buttons animate-on-scroll">
                 <a href="contact.html" class="btn-primary">Schedule a Call</a>
@@ -593,7 +625,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="max-w-6xl mx-auto px-4">
-            <p class="footer-note">Hosted on AWS S3.</p>
+            <p class="footer-note">Hosted on AWS S3 + CloudFront via Terraform. CI/CD by GitHub Actions.</p>
         </div>
     </footer>
 

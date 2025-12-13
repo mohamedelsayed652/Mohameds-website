@@ -177,15 +177,28 @@ function initProjectTimeline() {
 
     const projects = [
         {
+            id: 'aws-portfolio',
+            title: 'AWS Static Site + Serverless Contact',
+            period: '2025',
+            technologies: ['AWS', 'Terraform', 'GitHub Actions', 'API Gateway', 'Lambda', 'SES', 'CloudFront'],
+            description: 'Provisioned this portfolio on S3 + CloudFront with Route 53 + ACM, and a serverless contact flow using API Gateway → Lambda → SES.',
+            achievements: [
+                'Problem: Needed a production-grade personal site with reliable contact and TLS.',
+                'Approach: Terraform modules for S3/CloudFront/ACM/Route 53 + serverless API (API Gateway → Lambda → SES) + GitHub Actions deploy.',
+                'Result: Zero-downtime deploys in <2 minutes; SES-backed contact delivery; CDN-cached assets.'
+            ],
+            image: 'resources/project-5.jpg'
+        },
+        {
             id: 'nyc-taxi',
             title: 'NYC Taxi Big Data Analysis',
             period: '2024',
             technologies: ['Apache Spark', 'Databricks', 'SQL'],
-            description: 'Analyzed NYC taxi data using Spark and Databricks to extract insights on trip patterns, peak hours, and geographic distributions.',
+            description: 'Optimized Spark ETL on 10GB+ trips data to surface peak-hour and geo demand patterns.',
             achievements: [
-                'Processed 10GB+ of taxi data efficiently',
-                'Built ML pipelines for classification and regression',
-                'Improved model performance through hyperparameter tuning'
+                'Problem: Slow batch ETL limiting insights.',
+                'Approach: Partitioned data, tuned joins/caching, and built windowed aggregations for peaks.',
+                'Result: Cut runtime from ~25m to ~8m; delivered peak-hour and borough heatmaps.'
             ],
             image: 'resources/project-1.jpg'
         },
@@ -194,11 +207,11 @@ function initProjectTimeline() {
             title: 'Image Classification: ANN vs CNN',
             period: '2024',
             technologies: ['Python', 'Torch', 'Torchvision'],
-            description: 'Developed and compared image classifiers using Artificial Neural Networks and Convolutional Neural Networks.',
+            description: 'Benchmarked ANN vs CNN pipelines with augmentations and training curves.',
             achievements: [
-                'Achieved 95%+ accuracy with CNN model',
-                'Conducted comparative analysis of training epochs',
-                'Implemented both architectures from scratch'
+                'Problem: Need a performant image classifier baseline.',
+                'Approach: Implemented ANN and CNN from scratch, added augmentations, compared accuracy/latency.',
+                'Result: CNN reached ~95% accuracy with 3x faster inference than ANN.'
             ],
             image: 'resources/project-2.jpg'
         },
@@ -207,11 +220,11 @@ function initProjectTimeline() {
             title: 'COVID-19 Vaccination Analysis',
             period: '2023',
             technologies: ['Python', 'Pandas', 'Matplotlib'],
-            description: 'Analyzed COVID-19 vaccination trends in Ontario using government data to identify patterns and insights.',
+            description: 'Time-series analysis of Ontario vaccination uptake tied to policy changes.',
             achievements: [
-                'Created comprehensive time-series visualizations',
-                'Identified vaccination spikes and patterns',
-                'Contributed to public health insights'
+                'Problem: Understand vaccination spikes and regional differences.',
+                'Approach: Cleaned public datasets, built per-region time-series and comparative visuals.',
+                'Result: Highlighted spikes aligned with policy shifts; delivered dashboard for peers.'
             ],
             image: 'resources/project-3.jpg'
         },
@@ -219,12 +232,12 @@ function initProjectTimeline() {
             id: 'student-database',
             title: 'Student Record Database System',
             period: '2023',
-            technologies: ['SQL', 'ER Diagrams', 'Database Design'],
-            description: 'Designed and implemented a comprehensive student record database with optimized performance and advanced SQL techniques.',
+            technologies: ['SQL', 'Database Design'],
+            description: 'Relational design for student records with indexed queries and reports.',
             achievements: [
-                'Created comprehensive ER diagrams',
-                'Optimized database performance',
-                'Managed extensive student information system'
+                'Problem: Centralize student data with fast lookups.',
+                'Approach: Normalized schema with indexed queries and stored procedures.',
+                'Result: Faster retrieval for core queries and cleaner reporting.'
             ],
             image: 'resources/project-4.jpg'
         }

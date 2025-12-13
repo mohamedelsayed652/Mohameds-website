@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Mohamed El Sayed</title>
-    <meta name="description" content="Explore Mohamed El Sayed's data analytics projects including NYC taxi analysis, image classification, and COVID-19 research.">
+    <meta name="description" content="Cloud and DevOps projects showcasing AWS, Terraform, Docker, and CI/CD by Mohamed El Sayed.">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -37,6 +37,19 @@
             background-color: var(--neutral);
             color: var(--text);
             line-height: 1.6;
+            padding-top: 60px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
         
         .font-display {
@@ -223,21 +236,45 @@
         
         .project-card {
             cursor: pointer;
+            background: white;
+            position: relative;
+            overflow: hidden;
         }
         
         .project-image {
+            position: relative;
             width: 100%;
             height: 250px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            display: block;
             transition: transform 0.3s ease;
         }
         
-        .project-card:hover .project-image {
+        .project-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.65) 100%);
+            pointer-events: none;
+        }
+
+        .project-card:hover .project-image img {
             transform: scale(1.05);
         }
-        
+
         .project-info {
-            padding: 2rem;
+            padding: 1.5rem 1.75rem;
+            background: #ffffff;
+            box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+            z-index: 2;
+            border-top: 1px solid #e2e8f0;
         }
         
         .project-title {
@@ -433,27 +470,31 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white text-black px-3 py-2 rounded">Skip to content</a>
+
     <!-- Navigation -->
     <nav class="nav-bar">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center">
                 <div class="font-display font-bold text-xl text-white">Mohamed El Sayed</div>
-                <div class="nav-links flex space-x-6">
+                <div class="nav-links flex items-center space-x-4">
                     <a href="index.html" class="nav-link">Home</a>
                     <a href="about.html" class="nav-link">About</a>
                     <a href="projects.html" class="nav-link">Projects</a>
                     <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="resume.pdf" class="nav-link" target="_blank" rel="noopener">Resume</a>
+                    <a href="https://github.com/mohamedelsayed652" class="nav-link" target="_blank" rel="noopener">GitHub</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Page Hero -->
-    <section class="page-hero">
+    <section class="page-hero" id="main-content">
         <div class="max-w-4xl mx-auto px-4">
-            <h1 class="page-title font-display animate-on-scroll">Projects That Ship</h1>
+            <h1 class="page-title font-display animate-on-scroll">Projects</h1>
             <p class="page-subtitle animate-on-scroll">
-                End-to-end data, analytics, and ML work that improved decision-making for real stakeholders.
+                AWS, Terraform, Docker, and GitHub Actions work that deploys real infrastructure and pipelines.
             </p>
         </div>
     </section>
@@ -511,7 +552,6 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="max-w-6xl mx-auto px-4">
-            <p>&copy; 2024 Mohamed El Sayed. All rights reserved.</p>
             <p class="footer-note">Hosted on AWS (S3 static site + CloudFront).</p>
         </div>
     </footer>
