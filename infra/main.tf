@@ -10,15 +10,15 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-1"  # change if you want
+  region = "us-east-1"  
 }
 
-# S3 bucket for static website
+# S3 bucket
 resource "aws_s3_bucket" "static_site" {
   bucket = "mohamed-portfolio-site-2025" 
 }
 
-# Allow public access (we’ll control via bucket policy)
+# Allow public access 
 resource "aws_s3_bucket_public_access_block" "static_site" {
   bucket = aws_s3_bucket.static_site.id
 
