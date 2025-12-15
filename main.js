@@ -44,12 +44,12 @@ function initSkillsRadar() {
         },
         {
             name: 'Databases',
-            value: 90,
+            value: 80,
             items: ['SQL', 'MySQL', 'MongoDB', 'Redshift']
         },
         {
             name: 'Analytics',
-            value: 88,
+            value: 83,
             items: ['Pandas', 'NumPy', 'Scikit-learn']
         },
         {
@@ -59,13 +59,13 @@ function initSkillsRadar() {
         },
         {
             name: 'Visualization',
-            value: 80,
+            value: 75,
             items: ['Power BI', 'Matplotlib', 'ECharts']
         },
         {
             name: 'Cloud/Tools',
-            value: 75,
-            items: ['AWS', 'Git', 'Jupyter']
+            value: 90,
+            items: ['AWS', 'Git', 'Terraform']
         }
     ];
 
